@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/main_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        tools:context="com.porrux.threat.ThreaTListActivity"
+        android:orientation="vertical">
+
+
+
+        <EditText
+            android:text="@string/list_title_local"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:id="@+id/listTitleLocal"
+            android:textColor="@color/colorTitles"
+            android:background="@color/background_title"
+            android:inputType="none"
+            android:textStyle="bold"
+            android:editable="false"
+            android:focusable="false" />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listLocal" />
+
+        <TextView
+            android:id="@+id/empty_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_list" />
+
+        <EditText
+            android:text="@string/list_title_international"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:id="@+id/listTitleInternational"
+            android:textColor="@color/colorTitles"
+            android:background="@color/background_title"
+            android:inputType="none"
+            android:textStyle="bold"
+            android:editable="false"
+            android:focusable="false"/>
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listInternational" />
+
+        <TextView
+            android:id="@+id/empty_inter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_list" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_dialog_alert"
+        />
+
+</android.support.design.widget.CoordinatorLayout>
