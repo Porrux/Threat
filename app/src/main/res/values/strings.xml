@@ -7,7 +7,7 @@
     <string name="pirates">pirate</string>
     <string name="ninjas">ninja</string>
     <string name="google_api_key">AIzaSyAmOecDUsJVyKUu-oNlg8dCkES7LGbEWE0</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="t5km">5 km</string>
+    <string name="t10km">10 km</string>
+    <string name="t15km">15 km</string>
 </resources>

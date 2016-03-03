@@ -31,16 +31,22 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
-public class MapFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+public class MapFragment extends SupportMapFragment implements OnMapReadyCallback,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
+        GoogleMap.OnMapClickListener,
+        GoogleMap.OnMapLongClickListener {
 
     private GoogleApiClient mGoogleApiClient;
     private Location mCurrentLocation;
     private static final int REQUEST_CODE_LOCATION = 2;
     private Location mLastLocation;
     private GoogleMap googleMap;
+    private ArrayList<Marker> markers = new ArrayList<>();
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -59,6 +65,8 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
+
+        getMap().setOnMapClickListener(this);
     }
 
     @Override
@@ -86,10 +94,11 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
             ActivityCompat.requestPermissions(this.getActivity(),
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_CODE_LOCATION);
+
+            ActivityCompat.requestPermissions(this.getActivity(),
+                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                    REQUEST_CODE_LOCATION);
         } else {
-            googleMap.setTrafficEnabled(true);
-            googleMap.setIndoorEnabled(true);
-            googleMap.setBuildingsEnabled(true);
             googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setZoomControlsEnabled(true);
         }
@@ -108,16 +117,18 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
             ActivityCompat.requestPermissions(this.getActivity(),
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_CODE_LOCATION);
+
+            ActivityCompat.requestPermissions(this.getActivity(),
+                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                    REQUEST_CODE_LOCATION);
         } else {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                     mGoogleApiClient);
 
-            if (mLastLocation != null) {
-                // Set map to current location
-                LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                float zoomLevel = 16;
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
-            }
+            // Set map to current location
+            LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+            float zoomLevel = 16;
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
         }
     }
 
@@ -126,4 +137,38 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
 
     }
 
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        if(!markers.isEmpty()) {
+            for (Marker marker : markers) {
+                marker.remove();
+            }
+        }
+        MarkerOptions options = new MarkerOptions().position( latLng );
+        options.title(getAddressFromLatLng(latLng));
+
+        options.icon( BitmapDescriptorFactory.defaultMarker() );
+        Marker marker = googleMap.addMarker(options);
+        markers.add(marker);
+
+    }
+
+    private String getAddressFromLatLng( LatLng latLng ) {
+        Geocoder geocoder = new Geocoder( getActivity() );
+
+        String address = "";
+        try {
+            address = geocoder.getFromLocation( latLng.latitude, latLng.longitude, 1 ).get( 0 ).getAddressLine( 0 );
+        } catch (IOException e ) {
+        }
+
+        return address;
+    }
+
+    @Override
+    public void onMapLongClick(LatLng latLng) {
+        Log.d("longmarker", "tototo");
+
+    }
 }
