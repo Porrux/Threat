@@ -112,10 +112,12 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                     mGoogleApiClient);
 
-            // Set map to current location
-            LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-            float zoomLevel = 16;
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
+            if (mLastLocation != null) {
+                // Set map to current location
+                LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+                float zoomLevel = 16;
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
+            }
         }
     }
 
