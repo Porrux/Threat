@@ -46,16 +46,6 @@ public class ThreaTListActivity extends AppCompatActivity {
         listLocal.setOnItemClickListener(listItemListener);
     }
 
-    View.OnClickListener fabListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Snackbar.make(view, "Ajout d'un évènement", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-
-            //Open intent
-            //TODO Ouvrir ajout d'element
-        }
-    };
-
      AdapterView.OnItemClickListener listItemListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
