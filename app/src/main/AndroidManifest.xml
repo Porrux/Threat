@@ -17,14 +17,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThreaTFormActivity">
+        <activity android:name=".ThreaTListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ThreaTListActivity" />
+        <activity android:name=".ThreaTFormActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"

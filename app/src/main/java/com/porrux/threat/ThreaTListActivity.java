@@ -1,5 +1,6 @@
 package com.porrux.threat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,17 +27,23 @@ public class ThreaTListActivity extends AppCompatActivity {
 
         // The button to add events
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(fabListener);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Ajout d'un évènement", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
 
-        // When empty listview
+                Intent form_event = new Intent(ThreaTListActivity.this, ThreaTFormActivity.class);
+                startActivity(form_event);
+            }
+        });
+
+        //Hello
         TextView emptyText1 = (TextView)findViewById(R.id.empty_inter);
         TextView emptyText2 = (TextView)findViewById(R.id.empty_local);
         listLocal.setEmptyView(emptyText1);
         listInternantional.setEmptyView(emptyText2);
 
         listLocal.setOnItemClickListener(listItemListener);
-
-
     }
 
     View.OnClickListener fabListener = new View.OnClickListener() {
