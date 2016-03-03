@@ -5,7 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,21 +26,33 @@ public class ThreaTListActivity extends AppCompatActivity {
 
         // The button to add events
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Ajout d'un évènement", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+        fab.setOnClickListener(fabListener);
 
-                //Open intent
-                //TODO Ouvrir ajout d'element
-            }
-        });
-
-        //Hello
+        // When empty listview
         TextView emptyText1 = (TextView)findViewById(R.id.empty_inter);
         TextView emptyText2 = (TextView)findViewById(R.id.empty_local);
         listLocal.setEmptyView(emptyText1);
         listInternantional.setEmptyView(emptyText2);
 
+        listLocal.setOnItemClickListener(listItemListener);
+
+
     }
+
+    View.OnClickListener fabListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Snackbar.make(view, "Ajout d'un évènement", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+
+            //Open intent
+            //TODO Ouvrir ajout d'element
+        }
+    };
+
+     AdapterView.OnItemClickListener listItemListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+
+        }
+    };
 }
