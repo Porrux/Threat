@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/threatdetailsmap"
+        android:name="com.porrux.threat.ThreatDetailsMapFragment"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        tools:layout="@layout/fragment_threat_details" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1"
+        android:background="@color/colorAccent"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Threat in :"
+            android:textColor="@color/colorTitles"
+            android:id="@+id/detailsthreatin" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1"
+           >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Adresse"
+                android:id="@+id/details_adress"
+                android:textColor="@color/colorTitles"
+                android:layout_weight="1.61" />
+
+            <TextView
+                android:layout_width="214dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/colorTitles"
+                android:text="Date"
+                android:id="@+id/date_details" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="10dp"/>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="55dp"
+            android:text="VoteUp"
+            android:id="@+id/detailsvoteup"
+            android:textSize="15sp"
+            android:textColor="@color/colorTitles"
+
+            android:background="@drawable/buttonshape"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
+            />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="55dp"
+            android:text="VoteDown"
+            android:id="@+id/detailsvotedown"
+            android:layout_gravity="center_horizontal"
+
+            android:textSize="15sp"
+            android:textColor="@color/colorTitles"
+
+            android:background="@drawable/buttonshape"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/detailsvoteup"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15dp"/>
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Description :"
+        android:id="@+id/textViewdetailsdecript" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/lorem"
+        android:id="@+id/textView3" />
+
+
+</LinearLayout>

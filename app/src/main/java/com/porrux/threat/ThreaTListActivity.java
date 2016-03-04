@@ -14,8 +14,8 @@ import android.widget.TextView;
 public class ThreaTListActivity extends AppCompatActivity {
 
     // View's component element
-    ListView listLocal;
-    ListView listInternantional;
+    private ListView listLocal;
+    private ListView listInternantional;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
