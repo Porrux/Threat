@@ -53,14 +53,11 @@ public class ThreatDetailsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         textViewDate = (TextView) findViewById(R.id.date_details);
         textViewDate.setText("Date : " + event.getTimestamp());
 
         textViewDescription = (TextView) findViewById(R.id.detailsdescription);
         textViewDescription.setText(event.getDescription());
-
-
 
     }
 

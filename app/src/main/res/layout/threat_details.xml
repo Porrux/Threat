@@ -47,17 +47,18 @@
                >
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Adresse"
+                    android:layout_margin="1dp"
                     android:id="@+id/details_adress"
                     android:textColor="@color/colorTitles"
                     android:layout_weight="1.61" />
 
                 <TextView
-                    android:layout_width="214dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/colorTitles"
                     android:text="Date"
