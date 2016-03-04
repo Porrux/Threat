@@ -7,6 +7,14 @@
     <string name="pirates">pirate</string>
     <string name="ninjas">ninja</string>
     <string name="google_api_key">AIzaSyAmOecDUsJVyKUu-oNlg8dCkES7LGbEWE0</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_threat_details">ThreatDetailsActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non magna quis velit porttitor rhoncus vel id ex. Etiam vel imperdiet libero. Sed et mauris sit amet enim ornare gravida. Morbi venenatis eros id pulvinar dictum. Mauris pulvinar ullamcorper lorem, ultricies eleifend elit sagittis ac. Cras placerat libero quis pretium viverra. Suspendisse tempus vulputate neque ut vulputate. Nunc maximus ultricies tristique. Fusce id rutrum nisi. Phasellus efficitur lacus et sem blandit, sed fermentum purus viverra. Nunc at arcu sit amet massa bibendum dictum. Curabitur a metus convallis, dignissim quam vel, venenatis mi. Nulla quis dapibus sem, vitae vehicula odio. Proin scelerisque porta sem quis mollis. Cras aliquet velit eu molestie auctor.
+
+Sed lacinia tortor ut urna congue fermentum. Nullam sollicitudin nulla quam, at aliquet mi feugiat quis. Sed faucibus finibus dui id auctor. Ut in tempus purus. Donec ut molestie lectus, ac varius lorem. Suspendisse viverra leo et tortor convallis, sed elementum metus dignissim. Nunc sed auctor quam.</string>
     <string name="t5km">5 km</string>
     <string name="t10km">10 km</string>
     <string name="t15km">15 km</string>

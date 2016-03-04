@@ -15,15 +15,16 @@
         android:orientation="vertical">
 
 
-
-        <EditText
+        <TextView
             android:text="@string/list_title_local"
             android:layout_width="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_height="40dp"
             android:id="@+id/listTitleLocal"
             android:textColor="@color/colorTitles"
             android:background="@color/background_title"
             android:inputType="none"
+            android:gravity="center"
             android:textStyle="bold"
             android:editable="false"
             android:focusable="false" />
@@ -40,13 +41,14 @@
             android:layout_height="wrap_content"
             android:text="@string/empty_list" />
 
-        <EditText
+        <TextView
             android:text="@string/list_title_international"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:id="@+id/listTitleInternational"
             android:textColor="@color/colorTitles"
             android:background="@color/background_title"
+            android:gravity="center"
             android:inputType="none"
             android:textStyle="bold"
             android:editable="false"
