@@ -28,7 +28,7 @@ public interface WebServices {
     Call<Event> getEvent(@Path("id") String id);
 
     @POST("/api/event/{id}/vote")
-    Call<ResponseBody> vote(@Body Integer vote);
+    Call<ResponseBody> vote(@Path("id") String id, @Body Integer vote);
 
     @GET("/api/type")
     Call<List<Type>> listTypes();
