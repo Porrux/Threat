@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -38,8 +39,7 @@ import java.util.HashMap;
 public class MapFragment extends SupportMapFragment implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        GoogleMap.OnMapClickListener,
-        GoogleMap.OnMapLongClickListener {
+        GoogleMap.OnMapClickListener {
 
     private GoogleApiClient mGoogleApiClient;
     private Location mCurrentLocation;
@@ -47,6 +47,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     private Location mLastLocation;
     private GoogleMap googleMap;
     private ArrayList<Marker> markers = new ArrayList<>();
+
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -164,11 +165,5 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         }
 
         return address;
-    }
-
-    @Override
-    public void onMapLongClick(LatLng latLng) {
-        Log.d("longmarker", "tototo");
-
     }
 }
