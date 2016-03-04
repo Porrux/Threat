@@ -2,22 +2,16 @@ package com.porrux.threat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -35,8 +29,8 @@ public class ThreatDetailsMapFragment  extends SupportMapFragment implements OnM
 
         setHasOptionsMenu(true);
 
-        //MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.threatdetailsmap);
-        //mapFragment.getMapAsync(this);
+        ThreatDetailsMapFragment mapFragment = (ThreatDetailsMapFragment) getFragmentManager().findFragmentById(R.id.threatdetailsmap);
+        mapFragment.getMapAsync(this);
 
         setHasOptionsMenu(true);
 
