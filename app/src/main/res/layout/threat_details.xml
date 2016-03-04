@@ -69,10 +69,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
-        <Button
+        <ImageButton
             android:layout_width="150dp"
             android:layout_height="55dp"
-            android:text="VoteUp"
             android:id="@+id/detailsvoteup"
             android:textSize="15sp"
             android:textColor="@color/colorTitles"
@@ -80,12 +79,11 @@
             android:background="@drawable/buttonshape"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="15dp"
-            />
+            android:src="@drawable/ic_thumb_down_black_24dp" />
 
-        <Button
+        <ImageButton
             android:layout_width="150dp"
             android:layout_height="55dp"
-            android:text="VoteDown"
             android:id="@+id/detailsvotedown"
             android:layout_gravity="center_horizontal"
 
@@ -96,7 +94,9 @@
             android:layout_alignParentTop="true"
             android:layout_alignBottom="@+id/detailsvoteup"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_thumb_up_black_24dp"
+            android:clickable="true" />
     </RelativeLayout>
 
 
@@ -110,16 +110,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Description :"
-        android:id="@+id/textViewdetailsdecript" />
+        android:id="@+id/textViewdetailsdecript"
+        android:paddingEnd="10dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/lorem"
-        android:id="@+id/textView3" />
+        android:id="@+id/detailsdescription" />
 
 
 </LinearLayout>

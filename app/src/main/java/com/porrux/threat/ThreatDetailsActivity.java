@@ -18,13 +18,6 @@ import com.google.android.gms.maps.GoogleMap;
 
 public class ThreatDetailsActivity extends AppCompatActivity {
 
-
-    private GoogleApiClient mGoogleApiClient;
-    private Location mCurrentLocation;
-    private LocationRequest locationRequest;
-    private GoogleMap mMap;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
