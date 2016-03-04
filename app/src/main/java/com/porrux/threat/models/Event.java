@@ -19,7 +19,7 @@ public class Event {
     private String country;
     @SerializedName("location")
     @Expose
-    private List<Location> location = new ArrayList<Location>();
+    private Location location = new Location();
     @SerializedName("level")
     @Expose
     private Integer level;
@@ -48,14 +48,6 @@ public class Event {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public List<Location> getLocation() {
-        return location;
-    }
-
-    public void setLocation(List<Location> location) {
-        this.location = location;
     }
 
     public Integer getLevel() {
@@ -112,5 +104,13 @@ public class Event {
 
     public void setRating(Integer rating) {
         this.rating = rating;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

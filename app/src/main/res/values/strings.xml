@@ -10,4 +10,5 @@
     <string name="t5km">5 km</string>
     <string name="t10km">10 km</string>
     <string name="t15km">15 km</string>
+    <string name="create">Create</string>
 </resources>
