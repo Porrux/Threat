@@ -1,39 +1,28 @@
 package com.porrux.threat;
 
 import android.Manifest;
-import android.content.Context;
+import android.app.Activity;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class MapFragment extends SupportMapFragment implements OnMapReadyCallback,
@@ -47,6 +36,12 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     private Location mLastLocation;
     private GoogleMap googleMap;
     private ArrayList<Marker> markers = new ArrayList<>();
+
+    onMarkerAdd mCallback;
+
+    public interface onMarkerAdd {
+        public void onMarkerAddCallback(Marker marker);
+    }
 
 
     @Override
@@ -146,12 +141,14 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
                 marker.remove();
             }
         }
-        MarkerOptions options = new MarkerOptions().position( latLng );
+        MarkerOptions options = new MarkerOptions().position(latLng);
         options.title(getAddressFromLatLng(latLng));
 
         options.icon( BitmapDescriptorFactory.defaultMarker() );
         Marker marker = googleMap.addMarker(options);
         markers.add(marker);
+
+        mCallback.onMarkerAddCallback(marker);
 
     }
 
@@ -165,5 +162,19 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         }
 
         return address;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (onMarkerAdd) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement onMarkerAddCallback");
+        }
     }
 }

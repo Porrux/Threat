@@ -31,7 +31,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/editTextTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
@@ -52,7 +52,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/editTextDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
@@ -73,15 +73,18 @@
                 android:text="Type"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="0dp"
+            <Spinner
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:layout_span="1"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:id="@+id/radioGroupTypes">
-            </RadioGroup>
+                android:id="@+id/spinnerTypes"
+                android:layout_column="2" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
         </TableRow>
 
         <TableRow
@@ -104,10 +107,25 @@
             <fragment
                 android:id="@+id/map"
                 android:name="com.porrux.threat.MapFragment"
-                android:layout_span="8"
+                android:layout_span="9"
                 android:layout_weight="100"
                 android:layout_height="250dp"
                 tools:layout="@layout/fragment_map" />
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create"
+                android:id="@+id/buttonCreate"
+                android:layout_weight="100"
+                android:layout_column="2" />
+        </TableRow>
+
+
     </TableLayout>
 </ScrollView>

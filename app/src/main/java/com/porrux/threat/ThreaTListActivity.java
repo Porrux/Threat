@@ -5,17 +5,34 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
+import android.view.MenuItem;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.porrux.threat.api.ApiClient;
+import com.porrux.threat.models.Event;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 
 public class ThreaTListActivity extends AppCompatActivity {
 
     // View's component element
-    private ListView listLocal;
-    private ListView listInternantional;
+    ListView listLocal;
+    ListView listInternantional;
+
+    private ArrayAdapter<String> adapter;
+    private List<String> liste;
+    public List<Event> events;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +41,27 @@ public class ThreaTListActivity extends AppCompatActivity {
 
         listLocal = (ListView) findViewById(R.id.listLocal);
         listInternantional = (ListView) findViewById(R.id.listInternational);
+
+        final ApiClient apiClient = new ApiClient(this);
+
+        apiClient.listEvents().enqueue(new Callback<List<Event>>() {
+            @Override
+            public void onResponse(Response<List<Event>> response, Retrofit retrofit) {
+
+                liste = new ArrayList<String>();
+                events = response.body();
+                for (int i = 0; i < events.size(); i++) {
+                    liste.add(events.get(i).getTitle());
+                }
+                adapter = new ArrayAdapter<String>(ThreaTListActivity.this, android.R.layout.simple_list_item_1, liste);
+                listLocal.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
 
         // The button to add events
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -43,13 +81,5 @@ public class ThreaTListActivity extends AppCompatActivity {
         listLocal.setEmptyView(emptyText1);
         listInternantional.setEmptyView(emptyText2);
 
-        listLocal.setOnItemClickListener(listItemListener);
     }
-
-     AdapterView.OnItemClickListener listItemListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-
-        }
-    };
 }
