@@ -94,16 +94,13 @@ public class ThreaTFormActivity extends AppCompatActivity implements MapFragment
                 apiClient.createEvent(event).enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Response<ResponseBody> response, Retrofit retrofit) {
-
                         Intent list_event = new Intent(ThreaTFormActivity.this, ThreaTListActivity.class);
                         startActivity(list_event);
-                        Log.d("new event uuid", response.raw().message());
-
                     }
 
                     @Override
                     public void onFailure(Throwable t) {
-
+                        Log.e("creation event", "Event not created");
                     }
                 });
 

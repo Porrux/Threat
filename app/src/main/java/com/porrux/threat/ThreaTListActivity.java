@@ -9,14 +9,17 @@ import android.util.Log;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.porrux.threat.api.ApiClient;
 import com.porrux.threat.models.Event;
+import com.porrux.threat.models.Type;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit.Callback;
@@ -33,6 +36,8 @@ public class ThreaTListActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     private List<String> liste;
     public List<Event> events;
+
+    HashMap<String, Event> eventsMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,7 @@ public class ThreaTListActivity extends AppCompatActivity {
                 events = response.body();
                 for (int i = 0; i < events.size(); i++) {
                     liste.add(events.get(i).getTitle());
+                    eventsMap.put(events.get(i).getTitle(), events.get(i));
                 }
                 adapter = new ArrayAdapter<String>(ThreaTListActivity.this, android.R.layout.simple_list_item_1, liste);
                 listLocal.setAdapter(adapter);
@@ -60,6 +66,17 @@ public class ThreaTListActivity extends AppCompatActivity {
             @Override
             public void onFailure(Throwable t) {
 
+            }
+        });
+
+        listLocal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = listLocal.getItemAtPosition(position);
+
+                Intent details_event = new Intent(ThreaTListActivity.this, ThreatDetailsActivity.class);
+                details_event.putExtra("Event", eventsMap.get(item.toString()));
+                startActivity(details_event);
             }
         });
 

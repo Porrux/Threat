@@ -3,6 +3,7 @@ package com.porrux.threat.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.annotation.Generated;
@@ -11,7 +12,7 @@ import javax.annotation.Generated;
  * Created by tperroin on 04/03/2016.
  */
 @Generated("org.jsonschema2pojo")
-public class Event {
+public class Event implements Serializable {
     @SerializedName("description")
     @Expose
     private String description;
