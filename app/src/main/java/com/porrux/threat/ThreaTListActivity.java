@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -44,8 +45,45 @@ public class ThreaTListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_threatlist);
 
+        this.loadLocalThreat();
+
+        // The button to add events
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Ajout d'un évènement", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+
+                Intent form_event = new Intent(ThreaTListActivity.this, ThreaTFormActivity.class);
+                startActivity(form_event);
+            }
+        });
+
+
+        listLocal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = listLocal.getItemAtPosition(position);
+
+                Intent details_event = new Intent(ThreaTListActivity.this, ThreatDetailsActivity.class);
+                details_event.putExtra("Event", eventsMap.get(item.toString()));
+                startActivity(details_event);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        this.loadLocalThreat();
+    }
+
+    private void loadLocalThreat() {
         listLocal = (ListView) findViewById(R.id.listLocal);
         listInternantional = (ListView) findViewById(R.id.listInternational);
+
+        final TextView emptyLocalListMessage = (TextView) findViewById(R.id.empty_local);
 
         final ApiClient apiClient = new ApiClient(this);
 
@@ -61,6 +99,10 @@ public class ThreaTListActivity extends AppCompatActivity {
                 }
                 adapter = new ArrayAdapter<String>(ThreaTListActivity.this, android.R.layout.simple_list_item_1, liste);
                 listLocal.setAdapter(adapter);
+
+                if (events.size() > 0) {
+                    emptyLocalListMessage.setVisibility(View.GONE);
+                }
             }
 
             @Override
@@ -68,35 +110,5 @@ public class ThreaTListActivity extends AppCompatActivity {
 
             }
         });
-
-        listLocal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object item = listLocal.getItemAtPosition(position);
-
-                Intent details_event = new Intent(ThreaTListActivity.this, ThreatDetailsActivity.class);
-                details_event.putExtra("Event", eventsMap.get(item.toString()));
-                startActivity(details_event);
-            }
-        });
-
-        // The button to add events
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Ajout d'un évènement", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-
-                Intent form_event = new Intent(ThreaTListActivity.this, ThreaTFormActivity.class);
-                startActivity(form_event);
-            }
-        });
-
-        //Hello
-        TextView emptyText1 = (TextView)findViewById(R.id.empty_inter);
-        TextView emptyText2 = (TextView)findViewById(R.id.empty_local);
-        listLocal.setEmptyView(emptyText1);
-        listInternantional.setEmptyView(emptyText2);
-
     }
 }
