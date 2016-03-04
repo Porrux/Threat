@@ -29,6 +29,8 @@ import java.util.Locale;
 public class ThreatDetailsActivity extends AppCompatActivity {
 
     public TextView textViewAddress;
+    public TextView textViewDate;
+    public TextView textViewDescription;
     public Geocoder geocoder;
     public List<Address> addresses;
 
@@ -45,9 +47,20 @@ public class ThreatDetailsActivity extends AppCompatActivity {
 
         try {
             addresses = geocoder.getFromLocation(event.getLocation().getX(), event.getLocation().getY(), 1);
+
+            textViewAddress.setText("Address : " + addresses.get(0).getAddressLine(0) + " " + addresses.get(0).getAddressLine(1));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+        textViewDate = (TextView) findViewById(R.id.date_details);
+        textViewDate.setText("Date : " + event.getTimestamp());
+
+        textViewDescription = (TextView) findViewById(R.id.detailsdescription);
+        textViewDescription.setText(event.getDescription());
+
+
 
     }
 
