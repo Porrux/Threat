@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -83,7 +84,9 @@ public class ThreatDetailsMapFragment  extends SupportMapFragment implements OnM
 
     @Override
     public void onConnected(Bundle bundle) {
+        FragmentActivity activity = this.getActivity();
 
+        
         // TODO Recuperer la position de l'event
         //
     }
