@@ -43,7 +43,13 @@ public class ApiClient {
         return webService.listTypes();
     }
 
-    public Call<ResponseBody> createEvent(Event event) { return webService.createEvent(event); }
+    public Call<ResponseBody> createEvent(Event event) {
+        return webService.createEvent(event);
+    }
+
+    public Call<List<Event>> listEvents() {
+        return webService.listEvents();
+    }
 
 
 }

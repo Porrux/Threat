@@ -1,5 +1,6 @@
 package com.porrux.threat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,7 +11,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Spinner;
 
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.Marker;
 import com.porrux.threat.api.ApiClient;
 import com.porrux.threat.models.Event;
@@ -18,11 +18,8 @@ import com.porrux.threat.models.Location;
 import com.porrux.threat.models.Type;
 import com.squareup.okhttp.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 import retrofit.Callback;
 import retrofit.Response;
@@ -98,7 +95,8 @@ public class ThreaTFormActivity extends AppCompatActivity implements MapFragment
                     @Override
                     public void onResponse(Response<ResponseBody> response, Retrofit retrofit) {
 
-
+                        Intent list_event = new Intent(ThreaTFormActivity.this, ThreaTListActivity.class);
+                        startActivity(list_event);
                         Log.d("new event uuid", response.raw().message());
 
                     }

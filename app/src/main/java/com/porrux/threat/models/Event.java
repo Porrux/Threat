@@ -3,8 +3,6 @@ package com.porrux.threat.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Generated;
@@ -14,41 +12,41 @@ import javax.annotation.Generated;
  */
 @Generated("org.jsonschema2pojo")
 public class Event {
-    @SerializedName("country")
-    @Expose
-    private String country;
-    @SerializedName("location")
-    @Expose
-    private Location location = new Location();
-    @SerializedName("level")
-    @Expose
-    private Integer level;
-    @SerializedName("type")
-    @Expose
-    private Type type;
-    @SerializedName("effectArea")
-    @Expose
-    private Integer effectArea;
-    @SerializedName("title")
-    @Expose
-    private String title;
     @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("uuid")
+
+    @SerializedName("effectArea")
     @Expose
-    private UUID uuid;
+    private Integer effectArea;
+
+    @SerializedName("level")
+    @Expose
+    private Integer level;
+
+    @SerializedName("location")
+    @Expose
+    private Location location;
+
     @SerializedName("rating")
     @Expose
     private Integer rating;
 
-    public String getCountry() {
-        return country;
-    }
+    @SerializedName("title")
+    @Expose
+    private String title;
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
+    @SerializedName("type")
+    @Expose
+    private Type type;
+
+    @SerializedName("timestamp")
+    @Expose
+    private Integer timestamp;
+
+    @SerializedName("uuid")
+    @Expose
+    private String uuid;
 
     public Integer getLevel() {
         return level;
@@ -90,11 +88,11 @@ public class Event {
         this.description = description;
     }
 
-    public UUID getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 
@@ -112,5 +110,13 @@ public class Event {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Integer getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Integer timestamp) {
+        this.timestamp = timestamp;
     }
 }
