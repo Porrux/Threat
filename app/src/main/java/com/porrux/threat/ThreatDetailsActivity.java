@@ -14,11 +14,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.porrux.threat.models.Event;
 
 import java.io.IOException;
@@ -33,13 +35,14 @@ public class ThreatDetailsActivity extends AppCompatActivity {
     public TextView textViewDescription;
     public Geocoder geocoder;
     public List<Address> addresses;
+    public Event event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.threat_details);
 
-        Event event = (Event) getIntent().getSerializableExtra("Event");
+        event = (Event) getIntent().getSerializableExtra("Event");
 
         textViewAddress = (TextView) findViewById(R.id.details_adress);
 
@@ -59,9 +62,5 @@ public class ThreatDetailsActivity extends AppCompatActivity {
 
         textViewDescription = (TextView) findViewById(R.id.detailsdescription);
         textViewDescription.setText(event.getDescription());
-
-
-
     }
-
 }

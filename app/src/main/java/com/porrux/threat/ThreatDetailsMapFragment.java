@@ -10,15 +10,18 @@ import android.view.View;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ThreatDetailsMapFragment  extends SupportMapFragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+public class ThreatDetailsMapFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleApiClient mGoogleApiClient;
     private static final int REQUEST_CODE_LOCATION = 2;
@@ -68,8 +71,8 @@ public class ThreatDetailsMapFragment  extends SupportMapFragment implements OnM
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_CODE_LOCATION);
         } else {
-            googleMap.setTrafficEnabled(true);
-            googleMap.setIndoorEnabled(true);
+            googleMap.setTrafficEnabled(false);
+            googleMap.setIndoorEnabled(false);
             googleMap.setBuildingsEnabled(true);
             googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setZoomControlsEnabled(true);
@@ -84,11 +87,12 @@ public class ThreatDetailsMapFragment  extends SupportMapFragment implements OnM
 
     @Override
     public void onConnected(Bundle bundle) {
-        FragmentActivity activity = this.getActivity();
+        ThreatDetailsActivity activity = (ThreatDetailsActivity) this.getActivity();
 
-        
-        // TODO Recuperer la position de l'event
-        //
+        LatLng pos = new LatLng(activity.event.getLocation().getX(),activity.event.getLocation().getY());
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 15));
+        googleMap.addMarker(new MarkerOptions().position(pos));
     }
 
     @Override
@@ -96,4 +100,7 @@ public class ThreatDetailsMapFragment  extends SupportMapFragment implements OnM
 
     }
 
+    public void setPosition(double x, double y, int zoom) {
+
+    }
 }

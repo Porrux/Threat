@@ -1,138 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.porrux.threat.ThreatDetailsActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
         <fragment
             android:id="@+id/threatdetailsmap"
             android:name="com.porrux.threat.ThreatDetailsMapFragment"
-            android:layout_height="161dp"
             android:layout_width="match_parent"
+            android:layout_height="161dp"
             tools:layout="@layout/fragment_threat_details" />
 
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:weightSum="1"
             android:background="@color/colorAccent"
-            >
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <TextView
+                android:id="@+id/detailsthreatin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Threat in :"
-                android:textColor="@color/colorTitles"
-                android:id="@+id/detailsthreatin" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTitles" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:weightSum="1"
-               >
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <TextView
+                    android:id="@+id/details_adress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_weight="1.61"
                     android:text="Adresse"
-                    android:id="@+id/details_adress"
-                    android:textColor="@color/colorTitles"
-                    android:layout_weight="1.61" />
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorTitles" />
 
                 <TextView
+                    android:id="@+id/date_details"
                     android:layout_width="214dp"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/colorTitles"
                     android:text="Date"
-                    android:id="@+id/date_details" />
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorTitles" />
             </LinearLayout>
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/darker_gray" />
 
         <RelativeLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <Button
+                android:id="@+id/detailsvoteup"
                 android:layout_width="150dp"
                 android:layout_height="55dp"
-                android:id="@+id/detailsvoteup"
-                android:textSize="15sp"
-                android:textColor="@color/colorTitles"
-
-                android:background="@drawable/buttonshape"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="15dp"
-                android:text="Vote Up" />
-
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="55dp"
-                android:id="@+id/detailsvotedown"
-                android:layout_gravity="center_horizontal"
-
-                android:textSize="15sp"
-                android:textColor="@color/colorTitles"
 
                 android:background="@drawable/buttonshape"
-                android:layout_alignParentTop="true"
+                android:text="Vote Up"
+                android:textColor="@color/colorTitles"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/detailsvotedown"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
                 android:layout_alignBottom="@+id/detailsvoteup"
+
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+
+                android:layout_gravity="center_horizontal"
                 android:layout_marginRight="15dp"
+                android:background="@drawable/buttonshape"
                 android:clickable="true"
-                android:text="Vote Down" />
+                android:text="Vote Down"
+                android:textColor="@color/colorTitles"
+                android:textSize="15sp" />
         </RelativeLayout>
 
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Description :"
-            android:id="@+id/textViewdetailsdecript"
-            android:paddingEnd="10dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/lorem"
-            android:id="@+id/detailsdescription"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/textViewdetailsdecript"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:text="Description :"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/detailsdescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/lorem"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
     </LinearLayout>

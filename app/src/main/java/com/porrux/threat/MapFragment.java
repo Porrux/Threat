@@ -136,7 +136,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
 
     @Override
     public void onMapClick(LatLng latLng) {
-        if(!markers.isEmpty()) {
+        if (!markers.isEmpty()) {
             for (Marker marker : markers) {
                 marker.remove();
             }
@@ -144,7 +144,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         MarkerOptions options = new MarkerOptions().position(latLng);
         options.title(getAddressFromLatLng(latLng));
 
-        options.icon( BitmapDescriptorFactory.defaultMarker() );
+        options.icon(BitmapDescriptorFactory.defaultMarker());
         Marker marker = googleMap.addMarker(options);
         markers.add(marker);
 
@@ -152,13 +152,13 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
 
     }
 
-    private String getAddressFromLatLng( LatLng latLng ) {
-        Geocoder geocoder = new Geocoder( getActivity() );
+    private String getAddressFromLatLng(LatLng latLng) {
+        Geocoder geocoder = new Geocoder(getActivity());
 
         String address = "";
         try {
-            address = geocoder.getFromLocation( latLng.latitude, latLng.longitude, 1 ).get( 0 ).getAddressLine( 0 );
-        } catch (IOException e ) {
+            address = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1).get(0).getAddressLine(0);
+        } catch (IOException e) {
         }
 
         return address;
