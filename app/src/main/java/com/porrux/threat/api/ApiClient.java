@@ -51,5 +51,9 @@ public class ApiClient {
         return webService.listEvents();
     }
 
+    public Call<ResponseBody> vote(String uuid, Integer vote) {
+        return webService.vote(uuid, vote);
+    }
+
 
 }
